@@ -7,89 +7,54 @@
 <meta name="description" content="Lunicah B.V. werkt aan een nieuwe website. Binnenkort online.">
 <meta name="robots" content="noindex">
 <style>
-  :root {
-    --bg: #0f1424;
-    --bg2: #1a2240;
-    --text: #eef0f6;
-    --muted: #a3abc4;
-    --accent: #e8c77a;
-  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
+    background: #0e1220;
+    color: #f2f3f7;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text);
-    background: radial-gradient(ellipse at 70% 20%, var(--bg2) 0%, var(--bg) 60%);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr auto;
     min-height: 100vh;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
-  .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-  .stars span {
-    position: absolute; width: 2px; height: 2px; border-radius: 50%;
-    background: #fff; opacity: .5; animation: twinkle 4s ease-in-out infinite;
-  }
-  @keyframes twinkle { 0%,100% { opacity: .15; } 50% { opacity: .7; } }
   main {
-    position: relative; z-index: 1;
-    flex: 1; display: flex; flex-direction: column;
+    display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center; padding: 48px 24px;
   }
-  .moon {
-    width: 88px; height: 88px; margin-bottom: 36px;
-    filter: drop-shadow(0 0 28px rgba(232,199,122,.35));
+  .logo {
+    font-family: "Didot", "Bodoni 72", "Playfair Display", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(3.5rem, 11vw, 6.5rem);
+    letter-spacing: -0.01em;
+    line-height: 1;
   }
-  h1 {
-    font-size: clamp(2.4rem, 7vw, 4rem);
-    font-weight: 300; letter-spacing: .18em; text-transform: uppercase;
+  .logo span { color: #c9a96a; }
+  .rule { width: 40px; height: 1px; background: #c9a96a; margin: 36px 0 28px; }
+  .msg {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #b8bdcc;
   }
-  .bv { color: var(--muted); font-size: .9rem; letter-spacing: .3em; margin-top: 8px; text-transform: uppercase; }
-  .divider { width: 48px; height: 1px; background: var(--accent); margin: 32px auto; }
-  .lead { font-size: clamp(1.15rem, 2.6vw, 1.4rem); font-weight: 400; }
-  .sub { color: var(--muted); margin-top: 12px; max-width: 34em; line-height: 1.6; }
   footer {
-    position: relative; z-index: 1;
-    text-align: center; color: var(--muted); font-size: .8rem;
-    padding: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: #6b7186;
   }
-  @media (prefers-reduced-motion: reduce) { .stars span { animation: none; } }
 </style>
 </head>
 <body>
-  <div class="stars" aria-hidden="true" id="stars"></div>
-
   <main>
-    <svg class="moon" viewBox="0 0 100 100" aria-hidden="true">
-      <defs>
-        <mask id="crescent">
-          <rect width="100" height="100" fill="#fff"/>
-          <circle cx="64" cy="40" r="38" fill="#000"/>
-        </mask>
-      </defs>
-      <circle cx="50" cy="50" r="40" fill="#e8c77a" mask="url(#crescent)"/>
-    </svg>
-
-    <h1>Lunicah</h1>
-    <p class="bv">B.V.</p>
-    <div class="divider"></div>
-    <p class="lead">Binnenkort online met een nieuwe website.</p>
-    <p class="sub">We werken achter de schermen aan iets nieuws. Kom snel terug.</p>
+    <h1 class="logo">Lunicah<span>.</span></h1>
+    <div class="rule"></div>
+    <p class="msg">Binnenkort online</p>
   </main>
-
-  <footer>&copy; <span id="year">2026</span> Lunicah B.V.</footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    var s = document.getElementById('stars');
-    for (var i = 0; i < 70; i++) {
-      var d = document.createElement('span');
-      d.style.left = Math.random() * 100 + '%';
-      d.style.top = Math.random() * 100 + '%';
-      d.style.animationDelay = (Math.random() * 4) + 's';
-      s.appendChild(d);
-    }
-  </script>
+  <footer>&copy; 2026 Lunicah B.V.</footer>
 </body>
 </html>
