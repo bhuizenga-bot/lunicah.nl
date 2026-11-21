@@ -22,7 +22,7 @@
   }
   .sky { position: fixed; inset: 0; pointer-events: none; }
   .sky i {
-    position: absolute; border-radius: 50%; background: #fff;
+    position: absolute; border-radius: 50%; background: #fff; box-shadow: 0 0 4px rgba(255,255,255,.6);
   }
   .sky i.tw { animation: tw 5s ease-in-out infinite; }
   @keyframes tw { 0%, 100% { opacity: var(--o); } 50% { opacity: .08; } }
@@ -64,12 +64,12 @@
   <script>
     (function () {
       var sky = document.getElementById('sky');
-      var n = Math.round(Math.min(70, window.innerWidth * window.innerHeight / 22000));
+      var n = Math.round(Math.min(110, window.innerWidth * window.innerHeight / 14000));
       for (var i = 0; i < n; i++) {
         var s = document.createElement('i');
         var r = Math.random();
-        var size = r > 0.93 ? 2.5 : r > 0.65 ? 1.6 : 1;
-        var o = (0.25 + Math.random() * 0.6).toFixed(2);
+        var size = r > 0.92 ? 3 : r > 0.6 ? 2 : 1.3;
+        var o = (0.45 + Math.random() * 0.55).toFixed(2);
         s.style.width = s.style.height = size + 'px';
         s.style.left = (Math.random() * 100) + '%';
         s.style.top = (Math.random() * 100) + '%';
