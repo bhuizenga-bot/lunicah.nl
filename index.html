@@ -55,11 +55,25 @@
   .mail:hover, .mail:focus { color: #3e8bff; border-color: #3e8bff; }
   footer {
     position: relative;
-    padding: 28px 24px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 28px 32px;
     font-size: 0.72rem;
     letter-spacing: 0.08em;
     color: #5d6a88;
+  }
+  footer address {
+    font-style: normal;
+    text-align: right;
+    line-height: 1.6;
+    color: #8592ad;
+  }
+  footer address strong { color: #c8d2e6; font-weight: 600; }
+  @media (max-width: 560px) {
+    footer { flex-direction: column-reverse; align-items: center; text-align: center; }
+    footer address { text-align: center; }
   }
   @media (prefers-reduced-motion: reduce) { .sky i.tw { animation: none; } }
 </style>
@@ -72,7 +86,14 @@
     <p class="msg">Binnenkort online</p>
     <a class="mail" href="mailto:info@lunicah.nl">info@lunicah.nl</a>
   </main>
-  <footer>&copy; 2026 Lunicah B.V.</footer>
+  <footer>
+    <span>&copy; 2026 Lunicah B.V.</span>
+    <address>
+      <strong>Lunicah B.V.</strong><br>
+      Bloemenkelderlaan 15<br>
+      3451 MG Vleuten
+    </address>
+  </footer>
   <script>
     (function () {
       var sky = document.getElementById('sky');
