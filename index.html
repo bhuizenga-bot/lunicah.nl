@@ -118,6 +118,26 @@
     transition: color .2s, border-color .2s;
   }
   .mail:hover, .mail:focus { color: #3e8bff; border-color: #3e8bff; }
+  .clouds { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+  .cloud {
+    position: absolute; left: 0;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(130,160,220,0.16) 0%, rgba(130,160,220,0.07) 45%, rgba(130,160,220,0) 70%);
+    filter: blur(14px);
+    animation: cloud-drift linear infinite;
+    will-change: transform;
+  }
+  .cloud::before, .cloud::after {
+    content: ""; position: absolute; border-radius: 50%; background: inherit;
+  }
+  .cloud::before { width: 55%; height: 130%; left: 18%; top: -55%; }
+  .cloud::after { width: 40%; height: 105%; right: 12%; top: -35%; }
+  .cloud.c1 { top: 10%; width: 520px; height: 150px; animation-duration: 220s; animation-delay: -60s; }
+  .cloud.c2 { top: 36%; width: 360px; height: 105px; opacity: 0.7; animation-duration: 280s; animation-delay: -170s; }
+  .cloud.c3 { top: 64%; width: 640px; height: 180px; animation-duration: 250s; animation-delay: -110s; }
+  .cloud.c4 { top: 84%; width: 420px; height: 120px; opacity: 0.8; animation-duration: 200s; animation-delay: -20s; }
+  @keyframes cloud-drift { from { transform: translateX(-720px); } to { transform: translateX(110vw); } }
+  @media (prefers-reduced-motion: reduce) { .cloud { animation: none; transform: translateX(30vw); } }
   .lang {
     position: fixed; top: 18px; right: 24px; z-index: 3;
     display: flex; align-items: center; gap: 6px;
@@ -157,6 +177,7 @@
 </head>
 <body>
   <div class="sky" aria-hidden="true"><div class="sky-inner" id="sky"></div></div>
+  <div class="clouds" aria-hidden="true"><i class="cloud c1"></i><i class="cloud c2"></i><i class="cloud c3"></i><i class="cloud c4"></i></div>
   <nav class="lang" aria-label="Taal / Language">
     <button type="button" data-lang="nl" aria-pressed="true">NL</button><span aria-hidden="true">|</span><button type="button" data-lang="en" aria-pressed="false">EN</button>
   </nav>
